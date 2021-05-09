@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CatBrowse</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+
+    <string name="idis">ID: %1$s</string>
+    <string name="pick_image_intent_text">Pick image from</string>
+</resources>

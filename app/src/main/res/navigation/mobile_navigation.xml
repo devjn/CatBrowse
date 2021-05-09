@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.github.devjn.catbrowse.ui.view.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigate_to_detail"
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.github.devjn.catbrowse.ui.view.favorite.FavoritesFragment"
+        android:label="@string/title_favorite"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigate_to_detail"
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.github.devjn.catbrowse.ui.view.detail.DetailFragment"
+        android:label="{cat}"
+        tools:layout="@layout/detail_fragment">
+        <argument
+            android:name="cat"
+            app:argType="com.github.devjn.catbrowse.data.Cat" />
+    </fragment>
+</navigation>
