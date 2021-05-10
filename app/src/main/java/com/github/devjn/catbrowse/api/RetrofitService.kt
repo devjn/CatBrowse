@@ -1,10 +1,11 @@
 package com.github.devjn.catbrowse.api
 
-import okhttp3.*
+import okhttp3.CacheControl
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
 import java.util.concurrent.TimeUnit
 
 object RetrofitService {
@@ -21,16 +22,17 @@ object RetrofitService {
 //        val cache = Cache(httpCacheDirectory, cacheSize)
 
         okHttp = OkHttpClient.Builder()
-            .authenticator(Authenticator { route, response ->
+            .authenticator { route, response ->
                 response.request().newBuilder()
-                    .header("x-api-key", "9b7e282d-2a67-4c7b-a9fd-3f3e4056e949").build()
-            })
+                    .header("x-api-key", "9b7e282d-2a67-4c7b-a9fd-3f3e4056e949")
+                    .build()
+            }
             .addNetworkInterceptor(provideCacheInterceptor())
 //            .cache(cache)
             .build()
     }
 
-    fun catService() = builder
+    fun catService(): CatApiService = builder
         .baseUrl(CAT_BASE_URL).build()
         .create(CatApiService::class.java)
 

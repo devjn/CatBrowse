@@ -63,8 +63,7 @@ class MainActivity : AppCompatActivity() {
             }
             REQUEST_GAlERY -> {
                 val selectedImage: Uri = data.data ?: return
-                val part =
-                    IOHelper.getMultipartBodyFromUri(contentResolver, selectedImage) ?: return
+                val part = IOHelper.multipartBodyFromUri(contentResolver, selectedImage) ?: return
                 Provider.service.uploadCatImage(part).subscribe(
                     {
                         Log.i("TAG", "success uploading image")
